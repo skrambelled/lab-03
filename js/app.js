@@ -19,39 +19,37 @@ Animal.prototype.render = function () {
   $animalClone.find('p').text(this.description);
   $animalClone.find('img').attr('atl', this.keyword);
   
-  $animalClone.removeClass('class');
+  $animalClone.removeAttr('id');
   $animalClone.attr('class', this.keyword);
 };
 
 Animal.prototype.addOption = function () {
   if (($('select').find('.option-' + this.keyword)).length){
-    console.log(this.keyword);
     return;
   } 
   let $option = $(`<option value='${this.keyword}' class='option-${this.keyword}'>${this.keyword}</option>`);
   $('select').append($option);
 }
 
-
-Animal.readJson = () => {
+Animal.readJson = (pgNum) => {
     const ajaxSettings = {
         method: 'get',
         dataType: 'json'
     };
     
-    $.ajax('data/page-1.json', ajaxSettings)
+    $.ajax(`data/page-${pgNum}.json`, ajaxSettings)
     .then(data => {
         data.forEach(item => {
             let animal = new Animal(item);
             animal.render();
             animal.addOption();
         });
+        $('section').show();
         $('#photo-template').hide();
     })
-
 };
 
-$(() => Animal.readJson());
+$(() => Animal.readJson(1));
 
 
 $('select').on('change', function(){
@@ -64,4 +62,9 @@ $('select').on('change', function(){
     $(`.${this.value}`).show();
     console.log(this.value);
   } 
+});
+
+$('button').on('click', function(){
+    $("section").not("[id = 'photo-template']").remove();
+    $(() => Animal.readJson(this.value));
 });
