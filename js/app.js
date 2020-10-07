@@ -43,7 +43,7 @@ Animal.readJson = (pgNum) => {
         data.forEach(item => {
             let animal = new Animal(item);
             animal.render();
-            $().show();
+            //$(`.${animal.class}`).show();
             animal.addOption();
         });
     })
