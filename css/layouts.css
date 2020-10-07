@@ -1,0 +1,25 @@
+section{
+   /* float: left; */
+   display: inline-block;
+   padding: 1vw;
+   width: 25%;
+   margin: auto;
+}
+main{
+    width: 90vw;
+    
+}
+header{
+    text-align: center;
+}
+
+p{
+    max-width: 20vw;
+    height: 5vw;
+   
+}
+
+footer{
+    clear: both;
+    text-align: center;
+}
