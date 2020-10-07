@@ -37,15 +37,15 @@ Animal.readJson = (pgNum) => {
         dataType: 'json'
     };
     
-    $('#photo-template').hide();
     $.ajax(`data/page-${pgNum}.json`, ajaxSettings)
     .then(data => {
         data.forEach(item => {
             let animal = new Animal(item);
             animal.render();
-            //$(`.${animal.class}`).show();
             animal.addOption();
         });
+        $('section').show();
+        $('#photo-template').hide();
     })
 };
 
