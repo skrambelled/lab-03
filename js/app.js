@@ -34,8 +34,9 @@ Animal.readJson = (pgNum) => {
         let thisAnimal = new Animal(animal);
         thisAnimal.addOption();
         animals.push(thisAnimal);
-        $('main').append(thisAnimal.toHtml());
-      });
+        // $('main').append(thisAnimal.toHtml());
+    });
+    $('#animalSort').trigger('change');
     })
 };
 
@@ -62,13 +63,19 @@ $('button').on('click', function () {
   $(() => Animal.readJson(this.value));
 });
 
-$('#animalSort').on('change', function(){
+$('#animalSort').on('click', function(){
     $('section').remove();
+    console.log(this.value)
+
     if (this.value === 'sortByTitle'){
         animals.sort((a,b) => a.title > b.title ? 1:-1);
         
-    }else if (this.value === 'sortByHorn'){
+    }else if (this.value === 'sortByHornAscend'){
         animals.sort((a,b) => a.horns - b.horns);
+
+    }else if (this.value === 'sortByHornDescend'){
+        animals.sort((a,b) => b.horns - a.horns);
     };
-    animals.forEach(animal => $('main').append(animal).toHTML);
+
+    animals.forEach(animal => $('main').append(animal.toHtml()));
 });
