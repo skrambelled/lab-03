@@ -63,7 +63,8 @@ $('button').on('click', function () {
   $(() => Animal.readJson(this.value));
 });
 
-$('#animalSort').on('click', function(){
+$('#animalSort').on('change', function(){
+
     $('section').remove();
     console.log(this.value)
 
@@ -78,4 +79,6 @@ $('#animalSort').on('click', function(){
     };
 
     animals.forEach(animal => $('main').append(animal.toHtml()));
+    $('#animalType').trigger('change');
+    
 });
