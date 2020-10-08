@@ -19,11 +19,11 @@ Animal.prototype.toHtml = function () {
 };
 
 Animal.prototype.addOption = function () {
-  if (($('select').find('.option-' + this.keyword)).length) {
+  if (($('#animalType').find('.option-' + this.keyword)).length) {
     return;
   }
   let $option = $(`<option value='${this.keyword}' class='option-${this.keyword}'>${this.keyword}</option>`);
-  $('select').append($option);
+  $('#animalType').append($option);
 };
 
 Animal.readJson = (pgNum) => {
@@ -34,8 +34,9 @@ Animal.readJson = (pgNum) => {
         let thisAnimal = new Animal(animal);
         thisAnimal.addOption();
         animals.push(thisAnimal);
-        $('main').append(thisAnimal.toHtml());
-      });
+        // $('main').append(thisAnimal.toHtml());
+    });
+    $('#animalSort').trigger('change');
     })
 };
 
@@ -43,7 +44,7 @@ Animal.readJson = (pgNum) => {
 $(() => Animal.readJson(1));
 
 // event for select drop-down menu
-$('select').on('change', function () {
+$('#animalType').on('change', function () {
   if (this.value === 'default') {
     $('section').show();
     $('#photo-template').hide();
@@ -60,4 +61,24 @@ $('button').on('click', function () {
   $("section").remove();
   animals = [];
   $(() => Animal.readJson(this.value));
+});
+
+$('#animalSort').on('change', function(){
+
+    $('section').remove();
+    console.log(this.value)
+
+    if (this.value === 'sortByTitle'){
+        animals.sort((a,b) => a.title > b.title ? 1:-1);
+        
+    }else if (this.value === 'sortByHornAscend'){
+        animals.sort((a,b) => a.horns - b.horns);
+
+    }else if (this.value === 'sortByHornDescend'){
+        animals.sort((a,b) => b.horns - a.horns);
+    };
+
+    animals.forEach(animal => $('main').append(animal.toHtml()));
+    $('#animalType').trigger('change');
+    
 });
