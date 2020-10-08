@@ -1,46 +1,41 @@
 # lab-02
 
-301d67 lab02
+301d67 lab03
 
-## Feature 1: Displaying Images
+Mark & Yoni
 
-Driver: Mark
-Navigators: Somya and Yoni
+## Feature 1: Paginiation
 
-* Use Ajax to get the image from the corresponding JSON file
-* Create a constructor function that creates image objects
-* Instantiate new instances of all the image objects
-* Display all of the image objects on the homepage use jQuery to make a copy of the HTML template of each photo component append the copy with
-* Hide the template after the ajax is resolved
+Driver: Yoni
+Navigator: Mark
+
+* Added button for a 2nd page
+* Added 2nd json data page
 
 ## Feature 2: Filtering Images
 
-Driver: Somya
-Navigators: Mark and Yoni
+Driver: Mark
+Navigator: Yoni
 
-* added each animal as option for select menu
-* without duplication
-* hide and showed appropriate animals depending on selection
+* Updated templating to Mustache
   
 ## Feature 3: styling the application
 
+Driver: Mark
+Navigator: Yoni
+
+* Updated CSS to flexbox
+
+## Feature 4: Sorting
+
 Driver: Yoni
-Navigators: Somya and Yoni
-
-* Background color
-* Square images in a grid pattern
-* Scaling size of elements and fonts
-
-## Bonus kudos to our TAs
-
-* Chance
-* Bade
-* Alex
+Navigator: Mark
 
 ## Timing
 
 Feature | Estimated time | Start | Finish | Actual time
 ------- | -------------- | ----- | ------ | -----------
-1) Display Images | 2h | 2:50pm | 3:45pm | .9h
-2) Filter Images | 1h | 3:48pm | 5:55pm | 2.1h
-3) Style App | 1h | 6:15pm | 7:45pm | 1.5h
+1) Pagination | .5h | 3:15pm | 4:15pm | 1h
+2) Templating | .5h | 4:25pm | 5:00pm | .59h
+3) Flexbox | .5h | 5:15 | 5:55pm | .67h
+4) Sorting | 1h | 6:00pm | 7:10pm | 1.17h
